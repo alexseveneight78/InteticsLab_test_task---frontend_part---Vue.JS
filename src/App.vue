@@ -1,28 +1,42 @@
 <template>
   <div id="app">
-    <h1>{{ msg }}</h1>
+    <app-nav-panel></app-nav-panel>
+    <app-login-form></app-login-form>
   </div>
 </template>
 
 <script>
+import LoginForm from './components/LoginForm.vue';
+import NavPanel from './components/navigation_panel/NavPanel.vue';
+
+
+
 export default {
-  name: 'app',
+  components: {
+    'app-login-form': LoginForm,
+    'app-nav-panel': NavPanel
+  },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      
     }
   }
 }
 </script>
 
 <style>
+body {
+  padding: 0;
+  margin: 0;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin: 0;
+  padding: 0;
 }
 
 h1, h2 {
