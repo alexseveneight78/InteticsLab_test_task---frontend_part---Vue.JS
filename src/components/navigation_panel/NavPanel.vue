@@ -1,6 +1,7 @@
 <template>
     <div>
-        <nav>Actual worker: 
+        <nav>
+            <h3>Actual worker:</h3>
             <div class="navigation">
                 First Name: 
                 <span id="nav_first_name"></span>
@@ -22,7 +23,15 @@ export default {
 
 <style scoped>
     nav {
-        width: 75px;
+        height: 75px;
+        background-color: green;
+        color: white;
+    }
+    .navigation {
         display: inline-block;
+        width: auto;
+    }
+    h3 {
+        margin: 0;
     }
 </style>
