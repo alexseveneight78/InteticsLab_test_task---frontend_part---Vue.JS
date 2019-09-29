@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <app-create-client :createClientClass="createClientClass"></app-create-client>
     <app-login-form></app-login-form>
     <app-nav-panel></app-nav-panel>
     <app-main-panel></app-main-panel>
@@ -10,13 +11,15 @@
 import LoginForm from './components/LoginForm.vue';
 import NavPanel from './components/navigation_panel/NavPanel.vue';
 import MainPanel from './components/main_panel/MainPanel.vue';
+import CreateClient from './components/main_panel/client_info/CreateClient.vue';
 
 
 export default {
   components: {
     'app-login-form': LoginForm,
     'app-nav-panel': NavPanel,
-    'app-main-panel': MainPanel
+    'app-main-panel': MainPanel,
+    'app-create-client': CreateClient
   },
   data () {
     return {

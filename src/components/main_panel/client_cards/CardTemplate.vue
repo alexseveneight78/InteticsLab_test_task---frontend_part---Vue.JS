@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div id="cards">
         <div class="card_car">
             
         </div>
@@ -11,10 +11,12 @@
 
 <script>
 export default {
-    
+
 }
 </script>
 
 <style scoped>
-
+    #cards {
+        background-color: #ccebff;
+    }
 </style>

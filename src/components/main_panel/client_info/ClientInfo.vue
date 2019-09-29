@@ -4,17 +4,14 @@
             First Name <input type="text" class="client_firstname">
             Last Name <input type="text" class="client_lastname">
         </div>
-        <button-create-client-button></button-create-client-button>
+        <button id="createClient" @click="">Create a new client</button>
     </div>
 </template>
 
 <script>
-import CreateClientButton from './CreateClientButton.vue';
 
 export default {
-    components: {
-        'button-create-client-button': CreateClientButton
-    }
+    props: ['createClientClass']
 }
 </script>
 

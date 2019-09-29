@@ -24,7 +24,7 @@ export default {
 <style scoped>
     nav {
         height: 75px;
-        background-color: green;
+        background-color: rgba(26, 255, 140, 0.7);
         color: white;
     }
     .navigation {
