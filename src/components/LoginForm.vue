@@ -36,7 +36,7 @@ export default {
         top: 0;
         overflow: auto;
         background-color: rgba(0, 0, 0, 0.4);
-        display: none;
+        display: block;
         margin: 0;
     }
     .login_form_details {

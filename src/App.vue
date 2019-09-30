@@ -25,6 +25,13 @@ export default {
     return {
       
     }
+  },
+  created(){
+    let getData = this.$http.get('https://carservicedatabase.firebaseio.com/workers.json')
+      .then(response => {
+        return response.json();
+      })
+      console.log(getData)
   }
 }
 </script>

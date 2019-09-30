@@ -1,6 +1,8 @@
 <template>
     <div id="cards">
         <button id="add_card">Add card</button>
+        <button id="delete_card">Delete chosen cards</button>
+        <button id="save_changes">Save changes</button>
         <app-card-template></app-card-template>
     </div>
 </template>
@@ -25,7 +27,7 @@ export default {
         width: 75%;
         outline: 1px solid orange;
     }
-    #add_card {
+    #add_card,#delete_card,#save_changes {
         display: inherit;
         margin: 10px 0 0 10px;
     }
