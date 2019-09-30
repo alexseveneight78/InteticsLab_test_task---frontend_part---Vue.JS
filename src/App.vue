@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <app-create-client :createClientClass="createClientClass"></app-create-client>
+    <app-create-client></app-create-client>
     <app-login-form></app-login-form>
     <app-nav-panel></app-nav-panel>
     <app-main-panel></app-main-panel>

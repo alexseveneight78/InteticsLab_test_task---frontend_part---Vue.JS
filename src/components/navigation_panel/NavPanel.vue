@@ -25,7 +25,7 @@ export default {
     nav {
         height: 75px;
         background-color: rgba(26, 255, 140, 0.7);
-        color: white;
+        color: rgba(0,0,0,0.5);
     }
     .navigation {
         display: inline-block;
