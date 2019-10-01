@@ -2,7 +2,7 @@
     <div id="dashboard">
         <h3>Dashboard</h3>
         <ul>
-            
+            <li v-for="item in queryFromFB">{{ item }}</li>
         </ul>
 
 

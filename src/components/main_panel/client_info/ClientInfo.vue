@@ -16,8 +16,7 @@ import ClientDashboard from './ClientDashboard.vue';
 export default {
     methods: {
         show(){
-            let showForm = document.querySelector('.createClient');
-            showForm.style.display = 'block';
+            document.querySelector('.createClient').style.display = 'block';
         }
     },
     components: {

@@ -76,23 +76,6 @@ export default {
 
             }
     }
-    /*
-    created: function() {
-        let getData = this.$http.get('https://carservicedatabase.firebaseio.com/workers.json')
-            .then(response => {
-                return response.json();
-            })
-            .then(workers => {
-                for(let key in workers) {
-                    key === 'firstName' ? this.queryData.firstName = workers[key] : false;
-                    key === 'lastName' ? this.queryData.lastName = workers[key] : false;
-                    key === 'login' ? this.queryData.login = workers[key] : false;
-                    key === 'password' ? this.queryData.password = workers[key] : false;
-                }
-            })
-            
-    }
-    */
 }
 </script>
 
@@ -106,7 +89,7 @@ export default {
         top: 0;
         overflow: auto;
         background-color: rgba(0, 0, 0, 0.4);
-        display: block;
+        display: none;
         margin: 0;
     }
     .login_form_details {

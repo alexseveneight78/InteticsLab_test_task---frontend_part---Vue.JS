@@ -46,12 +46,25 @@ export default {
         hide(){
             document.querySelector('.createClient').style.display = 'none';
         },
+        // check if a new client doesn`t match with a someone from database
         submitData(){
+            this.$http.get('https://carservicedatabase.firebaseio.com/clients.json')
+                .then(response => {
+                    return response.json();
+                })
+                .then(clients => {
+                    let result = [];
+                    for(let key in clients) {
+                        result.push(clients[key])
+                    }
+                    this.query = result;
+                    console.log(this.query)
+                })
             this.$http.post('https://carservicedatabase.firebaseio.com/clients.json', this.query)
                 .then(response => {
-                    console.log(response);
+                    //console.log(response);
                 });
-            document.querySelector('.createClient').style.display = 'none';
+            //document.querySelector('.createClient').style.display = 'none';
         }
     }
 }
