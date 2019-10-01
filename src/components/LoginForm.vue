@@ -14,7 +14,7 @@
                 Login: <input type="text" v-model="actualData.login"><span ref="loginCheckMark">&#10006;</span>
             </div>
             <div class="login_form_wrapper">
-                Password: <input type="text" v-model="actualData.password"><span ref="passwordCheckMark">&#10006;</span>
+                Password: <input type="password" v-model="actualData.password"><span ref="passwordCheckMark">&#10006;</span>
             </div>
             <button @click="enterToApp">Enter</button>
         </div>
@@ -58,14 +58,19 @@ export default {
                         (this.actualData.lastName !== '' && this.actualData.lastName === this.queryData.lastName) &&
                         (this.actualData.login !== '' && this.actualData.login === this.queryData.login) && 
                         (this.actualData.password !== '' && this.actualData.password === this.queryData.password)) {
-                        this.$refs.firstNameCheckMark.innerHTML = '&#10004;';
-                        this.$refs.lastNameCheckMark.innerHTML = '&#10004;';
-                        this.$refs.loginCheckMark.innerHTML = '&#10004;';
-                        this.$refs.passwordCheckMark.innerHTML = '&#10004;';
+                            this.$refs.firstNameCheckMark.innerHTML = '&#10004;';
+                            this.$refs.lastNameCheckMark.innerHTML = '&#10004;';
+                            this.$refs.loginCheckMark.innerHTML = '&#10004;';
+                            this.$refs.passwordCheckMark.innerHTML = '&#10004;';
 
                         setTimeout(() => {
                             document.querySelector('.login_form').style.display = 'none';
                         },500);
+                    } else {
+                        this.$refs.firstNameCheckMark.style.color = 'red';
+                        this.$refs.lastNameCheckMark.style.color = 'red';
+                        this.$refs.loginCheckMark.style.color = 'red';
+                        this.$refs.passwordCheckMark.style.color = 'red';
                     }
                 },500)
 
