@@ -16,8 +16,8 @@ import CreateClient from './components/main_panel/client_info/CreateClient.vue';
 
 export default {
   components: {
-    'app-login-form': LoginForm,
     'app-nav-panel': NavPanel,
+    'app-login-form': LoginForm,
     'app-main-panel': MainPanel,
     'app-create-client': CreateClient
   },
@@ -25,13 +25,6 @@ export default {
     return {
       
     }
-  },
-  created(){
-    let getData = this.$http.get('https://carservicedatabase.firebaseio.com/workers.json')
-      .then(response => {
-        return response.json();
-      })
-      console.log(getData)
   }
 }
 </script>

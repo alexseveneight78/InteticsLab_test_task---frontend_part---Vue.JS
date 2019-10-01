@@ -41,10 +41,12 @@ export default {
                 }
             ]        
         }
-    },
+    }
+    /*
     created(){
         console.dir(this.queryCars[0]['orders'])
     }
+    */
 }
 </script>
 

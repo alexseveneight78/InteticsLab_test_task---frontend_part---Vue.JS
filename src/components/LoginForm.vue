@@ -4,25 +4,76 @@
         <div class="login_form_details">
             <h4> Authorisation form: </h4>
             <div class="login_form_wrapper">
-                First Name: <input type="text" id="form_firstName">
+                First Name: <input type="text" v-model="actualData.firstName">
+                <span ref='firstNameCheckMark' @click="$refs.firstNameCheckMark.innerHTML = 'ok'">hi</span>
             </div>
             <div class="login_form_wrapper">
-                Last Name: <input type="text" id="form_lastName">
+                Last Name: <input type="text" v-model="actualData.lastName"><span ref='lastNameCheckMark'>&#10060;</span>
             </div>
             <div class="login_form_wrapper">
-                Login: <input type="text" id="form_login">
+                Login: <input type="text" v-model="actualData.login"><span ref="loginCheckMark">&#10060;</span>
             </div>
             <div class="login_form_wrapper">
-                Password: <input type="text" id="form_password">
+                Password: <input type="text" v-model="actualData.password"><span ref="passwordCheckMark">&#10060;</span>
             </div>
-            <button id="enter">Enter</button>
+            <button @click="enterToApp">Enter</button>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    
+    data: function(){
+        return {
+            actualData: {
+                firstName: '',
+                lastName: '',
+                login: '',
+                password: ''            
+            },
+            queryData: {
+                firstName: '',
+                lastName: '',
+                login: '',
+                password: ''            
+            }
+        }
+    },
+    methods: {
+        enterToApp(){
+            let getData = this.$http.get('https://carservicedatabase.firebaseio.com/workers.json')
+                .then(response => {
+                    return response.json();
+                })
+                .then(workers => {
+                    for(let key in workers) {
+                        key === 'firstName' ? this.queryData.firstName = workers[key] : false;
+                        key === 'lastName' ? this.queryData.lastName = workers[key] : false;
+                        key === 'login' ? this.queryData.login = workers[key] : false;
+                        key === 'password' ? this.queryData.password = workers[key] : false;
+                    }
+                })   
+            document.querySelector('.login_form').style.display = 'none';
+            console.log(this.$refs.firstNameCheckMark.innerHTML)
+            }
+    }
+    /*
+    created: function() {
+        let getData = this.$http.get('https://carservicedatabase.firebaseio.com/workers.json')
+            .then(response => {
+                return response.json();
+            })
+            .then(workers => {
+                for(let key in workers) {
+                    key === 'firstName' ? this.queryData.firstName = workers[key] : false;
+                    key === 'lastName' ? this.queryData.lastName = workers[key] : false;
+                    key === 'login' ? this.queryData.login = workers[key] : false;
+                    key === 'password' ? this.queryData.password = workers[key] : false;
+                }
+            })
+            
+    }
+    */
 }
 </script>
 
