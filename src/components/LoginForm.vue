@@ -5,16 +5,16 @@
             <h4> Authorisation form: </h4>
             <div class="login_form_wrapper">
                 First Name: <input type="text" v-model="actualData.firstName">
-                <span ref='firstNameCheckMark' @click="$refs.firstNameCheckMark.innerHTML = 'ok'">hi</span>
+                <span ref='firstNameCheckMark' @click="$refs.firstNameCheckMark.innerHTML = 'ok'">&#10006;</span>
             </div>
             <div class="login_form_wrapper">
-                Last Name: <input type="text" v-model="actualData.lastName"><span ref='lastNameCheckMark'>&#10060;</span>
+                Last Name: <input type="text" v-model="actualData.lastName"><span ref='lastNameCheckMark'>&#10006;</span>
             </div>
             <div class="login_form_wrapper">
-                Login: <input type="text" v-model="actualData.login"><span ref="loginCheckMark">&#10060;</span>
+                Login: <input type="text" v-model="actualData.login"><span ref="loginCheckMark">&#10006;</span>
             </div>
             <div class="login_form_wrapper">
-                Password: <input type="text" v-model="actualData.password"><span ref="passwordCheckMark">&#10060;</span>
+                Password: <input type="text" v-model="actualData.password"><span ref="passwordCheckMark">&#10006;</span>
             </div>
             <button @click="enterToApp">Enter</button>
         </div>
@@ -52,9 +52,23 @@ export default {
                         key === 'login' ? this.queryData.login = workers[key] : false;
                         key === 'password' ? this.queryData.password = workers[key] : false;
                     }
-                })   
-            document.querySelector('.login_form').style.display = 'none';
-            console.log(this.$refs.firstNameCheckMark.innerHTML)
+                });
+                setTimeout(() =>{
+                    if((this.actualData.firstName !== '' && this.actualData.firstName === this.queryData.firstName) && 
+                        (this.actualData.lastName !== '' && this.actualData.lastName === this.queryData.lastName) &&
+                        (this.actualData.login !== '' && this.actualData.login === this.queryData.login) && 
+                        (this.actualData.password !== '' && this.actualData.password === this.queryData.password)) {
+                        this.$refs.firstNameCheckMark.innerHTML = '&#10004;';
+                        this.$refs.lastNameCheckMark.innerHTML = '&#10004;';
+                        this.$refs.loginCheckMark.innerHTML = '&#10004;';
+                        this.$refs.passwordCheckMark.innerHTML = '&#10004;';
+
+                        setTimeout(() => {
+                            document.querySelector('.login_form').style.display = 'none';
+                        },500);
+                    }
+                },500)
+
             }
     }
     /*
