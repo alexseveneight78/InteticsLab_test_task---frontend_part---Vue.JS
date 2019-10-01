@@ -11,7 +11,10 @@
         <div class="card_orders">
             <h4>List of orders: </h4>
             <ul>
-                <li v-for="order in queryCars['orders']">Order Number {{ order.orderNumber }}</li>
+                <li v-for="order in queryCars[0]['orders']">Order Number {{ order.orderNumber }}</li>
+                <li v-for="order in queryCars[0]['orders']">Order Date {{ order.orderDate }}</li>
+                <li v-for="order in queryCars[0]['orders']">Order Amount {{ order.orderAmount }}</li>
+                <li v-for="order in queryCars[0]['orders']">Order Status {{ order.orderStatus }}</li>
             </ul>
         </div>
     </div>
@@ -39,6 +42,11 @@ export default {
             ]        
         }
     }
+    /*
+    created(){
+        console.dir(this.queryCars[0]['orders'])
+    }
+    */
 }
 </script>
 
