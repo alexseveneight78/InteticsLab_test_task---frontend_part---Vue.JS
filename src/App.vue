@@ -16,8 +16,8 @@ import CreateClient from './components/main_panel/client_info/CreateClient.vue';
 
 export default {
   components: {
-    'app-login-form': LoginForm,
     'app-nav-panel': NavPanel,
+    'app-login-form': LoginForm,
     'app-main-panel': MainPanel,
     'app-create-client': CreateClient
   },
