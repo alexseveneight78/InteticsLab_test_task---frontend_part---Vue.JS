@@ -5,7 +5,7 @@
             Last Name <input type="text" class="client_lastname">
         </div>
         <button id="createClient" @click="show">Create a new client</button>
-        <button id="check_database">Check database</button>
+        <button>Check database</button>
         <app-client-dashboard></app-client-dashboard>
     </div>
 </template>

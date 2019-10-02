@@ -1,8 +1,14 @@
 <template>
     <div id="dashboard">
         <h3>Dashboard</h3>
+        <button @click="fetchData">Fetch data</button>
         <ul>
-            <li v-for="item in queryFromFB">{{ item }}</li>
+            <li v-for="item in queryFromFB">{{ item.firstName }}</li>
+            <li v-for="item in queryFromFB">{{ item.lastName }}</li>
+            <li v-for="item in queryFromFB">{{ item.birthDate }}</li>
+            <li v-for="item in queryFromFB">{{ item.address }}</li>
+            <li v-for="item in queryFromFB">{{ item.phone }}</li>
+            <li v-for="item in queryFromFB">{{ item.email }}</li>        
         </ul>
 
 
@@ -35,15 +41,15 @@ export default {
         fetchData(){
             this.$http.get('https://carservicedatabase.firebaseio.com/clients.json')
                 .then(response => {
-                    return reponse.json();
+                    return response.json();
                 })
-                .then(data => {
+                .then(clients => {
                     const resultArray = [];
-                    for(let key in data) {
-                        resultArray.push(data[key])
+                    for(let key in clients) {
+                        resultArray.push(clients[key])
                     }
                     this.queryFromFB = resultArray;
-                    console.log()
+                    console.log(this.queryFromFB)
                 })
         }
     }

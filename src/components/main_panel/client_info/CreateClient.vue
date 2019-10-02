@@ -3,22 +3,22 @@
         <h3>createClient Component</h3>
         <div class="create_client_form">
             <div class="create_client_el">
-                First Name <input type="text" id="create_client_first_name" v-model="query.firstName">
+                First Name <input type="text" v-model="newClient.firstName" required /> {{newClient.firstName}}
             </div>
             <div class="create_client_el">
-                Last Name <input type="text" id="create_client_last_name" v-model="query.lastName">
+                Last Name <input type="text"  v-model="newClient.lastName" required>
             </div>
             <div class="create_client_el">
-                Date of birth <input type="date" id="create_client_birthDate" v-model="query.birthDate">
+                Date of birth <input type="date" v-model="newClient.birthDate" required>
             </div>            
             <div class="create_client_el">
-                Address <input type="text" id="create_client_address" v-model="query.address">
+                Address <input type="text" v-model="newClient.address" required>
             </div>            
             <div class="create_client_el">
-                Phone <input type="text" id="create_client_phone" v-model="query.phone">
+                Phone <input type="text" v-model="newClient.phone" required>
             </div>            
             <div class="create_client_el">
-                Email <input type="text" id="create_client_email" v-model="query.email">
+                Email <input type="text" v-model="newClient.email" required>
             </div>
             <div class="create_client_el">
                 <button id="save_new_client" @click="submitData">Save a new client</button>
@@ -32,13 +32,13 @@
 export default {
     data: function() {
         return {
-            query: {
+            newClient: {
                 firstName: '',
                 lastName: '',
                 birthDate: '',
                 address: '',
                 phone: '',
-                email: ''
+                email: ''            
             }
         }
     },
@@ -57,14 +57,24 @@ export default {
                     for(let key in clients) {
                         result.push(clients[key])
                     }
-                    this.query = result;
-                    console.log(this.query)
-                })
-            this.$http.post('https://carservicedatabase.firebaseio.com/clients.json', this.query)
-                .then(response => {
-                    //console.log(response);
+                    // PROBLEM! EVEN IF A CURRENT CLIENT MATCHES WITH A CLIENT FROM DATABASE - HE`S NONTHELESS ADDED TO THE DATABASE - WHY SO???!!!
+                    result.forEach((item) => {
+                        if(this.newClient.firstName === item.firstName && this.newClient.lastName === item.lastName) {
+                            alert('The customer exists in database.');
+                            this.newClient.firstName = '';
+                            this.newClient.lastName = '';
+                            this.newClient.birthDate = '';
+                            this.newClient.address = '';
+                            this.newClient.phone = '';
+                            this.newClient.email = '';
+                            //return false;
+                        } else {
+                            this.$http.post('https://carservicedatabase.firebaseio.com/clients.json', this.newClient)
+                        }
+                        //return false;
+                    })
                 });
-            //document.querySelector('.createClient').style.display = 'none';
+            document.querySelector('.createClient').style.display = 'none';
         }
     }
 }
