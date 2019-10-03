@@ -1,30 +1,23 @@
 <template>
     <div id="dashboard">
+        <button @click="checkMatches">Check matches</button>
         <h3>Dashboard</h3>
-        <button @click="fetchData">Fetch data</button>
-        <ul>
-            <li v-for="item in queryFromFB">{{ item.firstName }}</li>
-            <li v-for="item in queryFromFB">{{ item.lastName }}</li>
-            <li v-for="item in queryFromFB">{{ item.birthDate }}</li>
-            <li v-for="item in queryFromFB">{{ item.address }}</li>
-            <li v-for="item in queryFromFB">{{ item.phone }}</li>
-            <li v-for="item in queryFromFB">{{ item.email }}</li>        
-        </ul>
-
-
-        <!-- 
-First Name: Jason
-Last Name: Statham
-Date of Birth: 26.07.1967
-Address: Derbyshire, England
-Phone: +44784565989
-Email: j.statham@gmail.com
-            -->
+        <ol>
+            <li>{{ queryFromFB.firstName }}</li>
+            <li>{{ queryFromFB.lastName }}</li>
+            <li>{{ queryFromFB.birthDate }}</li>
+            <li>{{ queryFromFB.address }}</li>
+            <li>{{ queryFromFB.phone }}</li>
+            <li>{{ queryFromFB.email }}</li>        
+        </ol>
+        <p>{{ clientFirstName }}</p>
+        <p>{{ clientLastName }}</p>
     </div>
 </template>
 
 <script>
 export default {
+    props: ['clientFirstName', 'clientLastName'],
     data: function(){
         return {
             queryFromFB: {
@@ -38,18 +31,21 @@ export default {
         }
     },
     methods: {
-        fetchData(){
+        checkMatches(){
             this.$http.get('https://carservicedatabase.firebaseio.com/clients.json')
                 .then(response => {
                     return response.json();
                 })
                 .then(clients => {
-                    const resultArray = [];
+                    const result = [];
                     for(let key in clients) {
-                        resultArray.push(clients[key])
+                        result.push(clients[key]);
                     }
-                    this.queryFromFB = resultArray;
-                    console.log(this.queryFromFB)
+                    result.forEach((item) => {
+                        if(item.firstName === this.clientFirstName && item.lastName === this.clientLastName) {
+                            this.queryFromFB = item;
+                        }
+                    })
                 })
         }
     }
@@ -60,5 +56,11 @@ export default {
     #dashboard {
         margin-top: 15px;
         outline: 1px dashed gray;
+    }
+    button {
+        margin-top: 10px;
+    }
+    ul {
+        list-style-type: circle;
     }
 </style>

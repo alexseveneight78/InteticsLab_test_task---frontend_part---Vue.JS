@@ -2,20 +2,15 @@
     <div class="card_template">
         <div class="card_car">
             <ul>
-                <li v-for="car in queryCars">Make: {{ car.make }}</li>
-                <li v-for="car in queryCars"> Model: {{ car.model }}</li>
-                <li v-for="car in queryCars">Year: {{ car.year }}</li>
-                <li v-for="car in queryCars">VIN: {{ car.vin }}</li>
+                <li>Make: <span  contenteditable="true">SSS{{ queryCars.make }}</span></li>     
+                <li>Model: {{ queryCars.model }}</li>    
+                <li>Year: {{ queryCars.year }}</li>   
+                <li>VIN: {{ queryCars.vin }}</li>
             </ul>
         </div>
         <div class="card_orders">
             <h4>List of orders: </h4>
-            <ul>
-                <li v-for="order in queryCars[0]['orders']">Order Number {{ order.orderNumber }}</li>
-                <li v-for="order in queryCars[0]['orders']">Order Date {{ order.orderDate }}</li>
-                <li v-for="order in queryCars[0]['orders']">Order Amount {{ order.orderAmount }}</li>
-                <li v-for="order in queryCars[0]['orders']">Order Status {{ order.orderStatus }}</li>
-            </ul>
+
         </div>
     </div>
 </template>
@@ -59,5 +54,6 @@ export default {
         width: 250px;
         background-color: #278ed3;
         color: white;
+        margin: 10px;
     }
 </style>

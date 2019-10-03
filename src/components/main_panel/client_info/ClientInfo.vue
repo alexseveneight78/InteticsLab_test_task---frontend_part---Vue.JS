@@ -1,12 +1,11 @@
 <template>
     <div class="client_info">
         <div class="client_inputs">
-            First Name <input type="text" class="client_firstname">
-            Last Name <input type="text" class="client_lastname">
+            First Name <input type="text" v-model="firstName">
+            Last Name <input type="text" v-model="lastName">
         </div>
         <button id="createClient" @click="show">Create a new client</button>
-        <button>Check database</button>
-        <app-client-dashboard></app-client-dashboard>
+        <app-client-dashboard :clientFirstName="firstName" :clientLastName="lastName"></app-client-dashboard>
     </div>
 </template>
 
@@ -14,6 +13,12 @@
 import ClientDashboard from './ClientDashboard.vue';
 
 export default {
+    data: function(){
+        return {
+            firstName: '',
+            lastName: ''
+        }
+    },
     methods: {
         show(){
             document.querySelector('.createClient').style.display = 'block';
